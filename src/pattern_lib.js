@@ -1,10 +1,99 @@
-const generateLine = function(symbol,noOfSymbol){
-  let line = "";
-  for(let index = 1;index <= noOfSymbol; index++){
-    line+= symbol;
+const generateLine = function(symbol,number){
+  let line = '';
+  for(let num = 1; num <= number; num++){
+    line += symbol;
   }
   return line;
 }
+
+//---RECTANGLE
+const generateFilledRectangle = function(rows,columns){
+  let rectangle = "";
+  let newLine = "";
+  let starLine = generateLine("*",columns);
+  
+  for(let rowNum = 0; rowNum < rows; rowNum++){
+    rectangle += newLine;
+    rectangle += starLine;
+    newLine = "\n";
+  }
+  return rectangle;
+}
+
+const generateAlternateRectangle = function(rows,columns){
+  let rectangle = "";
+  let newLine = "";
+  let character = "";
+
+  for(let rowNum = 1; rowNum <= rows; rowNum++){
+    character = "*";
+    
+    if(rowNum%2 == 0){
+      character = "-";
+    }
+
+    rectangle += newLine + generateLine(character,columns);
+    newLine = "\n";
+  }
+  return rectangle;
+}
+
+const generateEmptyRectangle = function(rows,columns){
+  let rectangle = "";
+  let starLine = generateLine("*",columns);
+  let spaceLine = generateLine(" ",columns-2);
+
+  rectangle += starLine+"\n";
+  for(let rowNum = 2; rowNum < rows; rowNum++){
+    rectangle += "*" + spaceLine + "*\n";
+  }
+  rectangle += starLine;
+  return rectangle;
+}
+
+const generateRectangle = function(typeOfRectangle,rows,columns){
+  if(typeOfRectangle == "filled"){
+  return generateFilledRectangle(rows,columns);
+  }
+  if(typeOfRectangle == "empty"){
+    return generateEmptyRectangle(rows,columns);
+  }
+  if(typeOfRectangle == "alternate"){
+    return generateAlternateRectangle(rows,columns);
+  }
+}
+
+//---TRIANGLE
+
+const rightAlignedTriangle = function(numberOfRow){
+  let output = "";
+  let newline = "";
+  for(let lineNum = 1; lineNum <= numberOfRow; lineNum++){
+    output += newline +generateLine(" ",numberOfRow - lineNum) + generateLine("*",lineNum);
+    newline = "\n";
+  }
+  return output
+}
+
+const leftAlignedTriangle = function(numberOfRow){
+  let output = "";
+  let newline = "";
+  for(let lineNum = 1; lineNum <= numberOfRow; lineNum++){
+    output += newline + generateLine("*",lineNum);
+    newline = "\n";
+  }
+  return output;
+}
+
+const makeTriangle = function(triangleType,numberOfRow){
+  if(triangleType == "right"){
+    return rightAlignedTriangle(numberOfRow);
+  }
+  if(triangleType == "left"){
+    return leftAlignedTriangle(numberOfRow);
+  }
+}
+//---DIAMOND
 
 const firstFilledDiam = function(height){
   let output = "";
@@ -129,20 +218,17 @@ const generateDiamond = function(diamondType,height){
   }
 
   if(diamondType == "filled"){
-    console.log(generateFilledDiamond(height));
+    return generateFilledDiamond(height);
   }
   if(diamondType == "hollow"){
-    console.log(generateHollowDiamond(height));
+    return generateHollowDiamond(height);
   }
   if(diamondType == "angled"){
-    console.log(generatAngledeDia(height));
+    return generatAngledeDia(height);
   }
 }
 
-const main = function(){
-  diamondType = process.argv[2];
-  height = +process.argv[3];
-  return generateDiamond(diamondType,height);
-}
-
-main();
+//---exports
+exports.generateRectangle = generateRectangle;
+exports.makeTriangle = makeTriangle;
+exports.generateDiamond = generateDiamond;
