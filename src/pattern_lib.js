@@ -85,7 +85,7 @@ const leftAlignedTriangle = function(numberOfRow){
   return output;
 }
 
-const makeTriangle = function(triangleType,numberOfRow){
+const generateTriangle = function(triangleType,numberOfRow){
   if(triangleType == "right"){
     return rightAlignedTriangle(numberOfRow);
   }
@@ -230,5 +230,5 @@ const generateDiamond = function(diamondType,height){
 
 //---exports
 exports.generateRectangle = generateRectangle;
-exports.makeTriangle = makeTriangle;
+exports.generateTriangle = generateTriangle;
 exports.generateDiamond = generateDiamond;
