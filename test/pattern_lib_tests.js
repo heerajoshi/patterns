@@ -1,6 +1,6 @@
 const assert = require("assert");
 
-const {generateRectangle} = require("../library/all_pattern_library.js");
+const {generateRectangle} = require("../src/pattern_lib.js");
 
 //-----(Filled Rectangle Tests)
 let line = new Array(5).fill("*").join("");
@@ -35,7 +35,7 @@ alternateRectangle_5_2 += "\n"+ dashLine +"\n"+ starLine;
 assert.equal(generateRectangle('alternate',5,2),alternateRectangle_5_2);
 
 //=====(TRIANGLE TESTS)
-const {makeTriangle} = require("../library/all_pattern_library.js");
+const {generateTriangle} = require("../src/pattern_lib.js");
 
 //=====(Left Alignment Triangle Test)
 let leftTriangle_5 = "*\n"
@@ -44,16 +44,16 @@ let leftTriangle_5 = "*\n"
   leftTriangle_5  += "****\n"
   leftTriangle_5  += "*****";
 
-assert.equal(makeTriangle("left",5),leftTriangle_5);
+assert.equal(generateTriangle("left",5),leftTriangle_5);
 
 let leftTriangle_7 = leftTriangle_5 + "\n******\n*******";
 
 
-assert.equal(makeTriangle("left",7),leftTriangle_7);
+assert.equal(generateTriangle("left",7),leftTriangle_7);
 
 //=====(Right Alignment Triangle Test)
 let rightTriangle_2 = " *\n**";
-assert.equal(makeTriangle("right",2),rightTriangle_2);
+assert.equal(generateTriangle("right",2),rightTriangle_2);
 
 let rightTriangle_6 = "     *\n"
   rightTriangle_6  += "    **\n"
@@ -61,9 +61,9 @@ let rightTriangle_6 = "     *\n"
   rightTriangle_6  += "  ****\n"
   rightTriangle_6  += " *****\n"
   rightTriangle_6  += "******"
-assert.equal(makeTriangle("right",6),rightTriangle_6);
+assert.equal(generateTriangle("right",6),rightTriangle_6);
 //=====(DIAMOND TESTS)
-const {generateDiamond} = require("../library/all_pattern_library.js");
+const {generateDiamond} = require("../src/pattern_lib.js");
 
 //=====(Filled Diamond Test)
 let filledDiamond_3 = " *\n";
@@ -102,7 +102,7 @@ let angledDiamond_3 = " *\n"
 let angledDiamond_5 = "  *\n"
   angledDiamond_5  += " / \\\n"
   angledDiamond_5  += "*   *\n"
-  angledDiamond_5  += "\\ /\n"
+  angledDiamond_5  += " \\ /\n"
   angledDiamond_5  += "  *";
 
 

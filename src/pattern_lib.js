@@ -95,7 +95,7 @@ const generateTriangle = function(triangleType,numberOfRow){
 }
 //---DIAMOND
 
-const firstFilledDiam = function(height){
+const filledFirstHlaf = function(height){
   let output = "";
   let nextLine = "";
   let noOfSpaces = Math.floor(height/2);
@@ -108,7 +108,7 @@ const firstFilledDiam = function(height){
   return output;
 }
 
-const secFilledDiam = function(height){
+const filledSecondHlaf = function(height){
   let output = "";
   let noOfStar = height - 2;
 
@@ -120,13 +120,13 @@ const secFilledDiam = function(height){
 }
 
 const generateFilledDiamond = function(height){
-  let firstHalf = firstFilledDiam(height);
-  let secondHalf= secFilledDiam(height);
+  let firstHalf = filledFirstHlaf(height);
+  let secondHalf= filledSecondHlaf(height);
   let diamond = firstHalf + secondHalf;
   return diamond;
 }
 
-const hollowDiamdFirsthalf = function(height){
+const hollowFirstHalf = function(height){
   let output = "";
   let noOfSpaces2 = 0;
   let star = "";
@@ -140,7 +140,7 @@ const hollowDiamdFirsthalf = function(height){
   return output;
 }
 
-const hollowDiamdSechalf = function (height){
+const hollowSecondHalf = function (height){
   let star1 = "*";
   let spaces2 = 1;
   let innerSpaces = height-4;
@@ -157,14 +157,34 @@ const hollowDiamdSechalf = function (height){
 }
 
 const generateHollowDiamond = function(height){
-  let firstHalf = hollowDiamdFirsthalf(height);
-  let secondHalf= hollowDiamdSechalf(height);
+  let firstHalf = hollowFirstHalf(height);
+  let secondHalf= hollowSecondHalf(height);
   let diamond = firstHalf + secondHalf;
   return diamond;
 }
 
+const angledFirstHalf = function(numOfLines){
+  let outerSpaces = Math.floor(numOfLines/2);
+  let innerSpaces = 1;
+  let firstHalf = "";
+  let star = "*";
+  let space = " ";
+  let forwardSlash = "/";
+  let backwardSlash = "\\";
+  let nextLine = "\n";
 
-const angledSecHalfDim = function(numOfLines){
+  firstHalf += generateLine(space,outerSpaces) + star;
+  for(let lineNum = 3; lineNum < numOfLines-1; lineNum+=2){
+    outerSpaces--;
+    firstHalf += nextLine + generateLine(space,outerSpaces) + forwardSlash;
+    firstHalf += generateLine(space,innerSpaces) + backwardSlash;
+    innerSpaces += 2;
+  }
+  return firstHalf;
+} 
+
+
+const angledSecondHalf = function(numOfLines){
   let outerSpaces = 1;
   let innerSpaces = numOfLines-2;
   let secondHalf = "";
@@ -185,29 +205,9 @@ const angledSecHalfDim = function(numOfLines){
   return secondHalf;
 }
 
-const angledfirstHalfDiam = function(numOfLines){
-  let outerSpaces = Math.floor(numOfLines/2);
-  let innerSpaces = 1;
-  let firstHalf = "";
-  let star = "*";
-  let space = " ";
-  let forwardSlash = "/";
-  let backwardSlash = "\\";
-  let nextLine = "\n";
-
-  firstHalf += generateLine(space,outerSpaces) + star;
-  for(let lineNum = 3; lineNum < numOfLines-1; lineNum+=2){
-    outerSpaces--;
-    firstHalf += nextLine + generateLine(space,outerSpaces) + forwardSlash;
-    firstHalf += generateLine(space,innerSpaces) + backwardSlash;
-    innerSpaces += 2;
-  }
-  return firstHalf;
-} 
-
 const generatAngledeDia = function(height){
-  let firstHalf = angledfirstHalfDiam(height);
-  let secondHalf = angledSecHalfDim(height);
+  let firstHalf = angledFirstHalf(height);
+  let secondHalf = angledSecondHalf(height);
   let diamond = firstHalf + secondHalf;
   return diamond;
 }
