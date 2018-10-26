@@ -95,7 +95,7 @@ const generateTriangle = function(triangleType,numberOfRow){
 }
 //---DIAMOND
 
-const filledFirstHlaf = function(height){
+const filledFirstHalf = function(height){
   let output = "";
   let nextLine = "";
   let noOfSpaces = Math.floor(height/2);
@@ -108,7 +108,7 @@ const filledFirstHlaf = function(height){
   return output;
 }
 
-const filledSecondHlaf = function(height){
+const filledSecondHalf = function(height){
   let output = "";
   let noOfStar = height - 2;
 
@@ -120,8 +120,8 @@ const filledSecondHlaf = function(height){
 }
 
 const generateFilledDiamond = function(height){
-  let firstHalf = filledFirstHlaf(height);
-  let secondHalf= filledSecondHlaf(height);
+  let firstHalf = filledFirstHalf(height);
+  let secondHalf= filledSecondHalf(height);
   let diamond = firstHalf + secondHalf;
   return diamond;
 }
@@ -205,7 +205,7 @@ const angledSecondHalf = function(numOfLines){
   return secondHalf;
 }
 
-const generatAngledeDia = function(height){
+const generatAngledDiamond = function(height){
   let firstHalf = angledFirstHalf(height);
   let secondHalf = angledSecondHalf(height);
   let diamond = firstHalf + secondHalf;
@@ -224,7 +224,7 @@ const generateDiamond = function(diamondType,height){
     return generateHollowDiamond(height);
   }
   if(diamondType == "angled"){
-    return generatAngledeDia(height);
+    return generatAngledDiamond(height);
   }
 }
 
