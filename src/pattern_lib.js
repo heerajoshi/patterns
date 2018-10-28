@@ -11,7 +11,7 @@ const generateFilledRectangle = function(rows,columns){
   let rectangle = "";
   let newLine = "";
   let starLine = generateLine("*",columns);
-  
+
   for(let rowNum = 0; rowNum < rows; rowNum++){
     rectangle += newLine;
     rectangle += starLine;
@@ -27,7 +27,7 @@ const generateAlternateRectangle = function(rows,columns){
 
   for(let rowNum = 1; rowNum <= rows; rowNum++){
     character = "*";
-    
+
     if(rowNum%2 == 0){
       character = "-";
     }
@@ -51,16 +51,10 @@ const generateEmptyRectangle = function(rows,columns){
   return rectangle;
 }
 
-const generateRectangle = function(typeOfRectangle,rows,columns){
-  if(typeOfRectangle == "filled"){
-  return generateFilledRectangle(rows,columns);
-  }
-  if(typeOfRectangle == "empty"){
-    return generateEmptyRectangle(rows,columns);
-  }
-  if(typeOfRectangle == "alternate"){
-    return generateAlternateRectangle(rows,columns);
-  }
+const generateRectangle = function(userArgs){
+  let {typeOfRectangle,rows,columns} = userArgs;
+  let patternsType = {filled: generateFilledRectangle, empty: generateEmptyRectangle, alternate: generateAlternateRectangle}
+    return patternsType[typeOfRectangle](rows,columns);
 }
 
 //---TRIANGLE
@@ -85,14 +79,11 @@ const leftAlignedTriangle = function(numberOfRow){
   return output;
 }
 
-const generateTriangle = function(triangleType,numberOfRow){
-  if(triangleType == "right"){
-    return rightAlignedTriangle(numberOfRow);
+const generateTriangle = function(triangleDetail){
+  let {triangleType, numberOfRow} = triangleDetail;
+  let patternsType = {right: rightAlignedTriangle,left: leftAlignedTriangle}
+    return patternsType[triangleType](numberOfRow);
   }
-  if(triangleType == "left"){
-    return leftAlignedTriangle(numberOfRow);
-  }
-}
 //---DIAMOND
 
 const filledFirstHalf = function(height){
@@ -212,20 +203,15 @@ const generatAngledDiamond = function(height){
   return diamond;
 }
 
-const generateDiamond = function(diamondType,height){
+const generateDiamond = function(userArgs){
+  let {diamondType,height} = userArgs;
+
   if(height%2 == 0){
     height--;
   }
+  let patternsType = { filled : generateFilledDiamond, hollow : generateHollowDiamond, angled : generatAngledDiamond }
 
-  if(diamondType == "filled"){
-    return generateFilledDiamond(height);
-  }
-  if(diamondType == "hollow"){
-    return generateHollowDiamond(height);
-  }
-  if(diamondType == "angled"){
-    return generatAngledDiamond(height);
-  }
+  return patternsType[diamondType](height);
 }
 
 //---exports
