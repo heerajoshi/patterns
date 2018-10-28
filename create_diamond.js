@@ -1,8 +1,7 @@
 const {generateDiamond} = require("./src/pattern_lib.js");
-
+const {readDiamondArgs} = require("./src/utilLib.js");
 const main = function(){
-  diamondType = process.argv[2];
-  height = +process.argv[3];
+  let {diamondType,height} = readDiamondArgs(process.argv);
   console.log(generateDiamond(diamondType,height));
 }
 
