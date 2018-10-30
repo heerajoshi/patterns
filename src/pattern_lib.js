@@ -1,8 +1,4 @@
-
-const generateLine = function(symbol,number){
-  let line =  new Array(number).fill(symbol);
-  return line;
-}
+const {generateLine} = require("./utilLib.js")
 
 //---RECTANGLE
 
@@ -43,7 +39,10 @@ const generateAlternateRectangle = function(rows,columns){
 
 const generateRectangle = function(userArgs){
   let {typeOfRectangle,rows,columns} = userArgs;
-  let patternsType = {filled: generateFilledRectangle, empty: generateEmptyRectangle, alternate: generateAlternateRectangle}
+  let patternsType = {filled : generateFilledRectangle};
+  patternsType.empty = generateEmptyRectangle;
+  patternsType.alternate = generateAlternateRectangle;
+
   return patternsType[typeOfRectangle](rows,columns).join('\n');
 }
 
@@ -223,7 +222,18 @@ const generateDiamond = function(userArgs){
   return patternsType[diamondType](height).join('\n');
 }
 
+//-----all_pattern
+
+const generatePatterns = function(userArg){
+  let {typeOfRectangle,rows,column} = userArg;
+  let patternsType = {filled_rectangle: generateFilledRectangle,
+     empty_rectangle : generateEmptyRectangle,
+     alternate_rectangle : generateAlternateRectangle}
+   
+  return patternsType[typeOfRectangle](rows,column);
+} 
 //---exports
+exports.generatePatterns = generatePatterns;
 exports.generateRectangle = generateRectangle;
 exports.generateTriangle = generateTriangle;
 exports.generateDiamond = generateDiamond;
