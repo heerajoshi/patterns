@@ -44,7 +44,7 @@ const generateAlternateRectangle = function(rows,columns){
 const generateRectangle = function(userArgs){
   let {typeOfRectangle,rows,columns} = userArgs;
   let patternsType = {filled: generateFilledRectangle, empty: generateEmptyRectangle, alternate: generateAlternateRectangle}
-  return patternsType[typeOfRectangle](rows,columns);
+  return patternsType[typeOfRectangle](rows,columns).join('\n');
 }
 
 //---TRIANGLE
@@ -78,7 +78,7 @@ const leftAlignedTriangle = function(numberOfRow){
 const generateTriangle = function(triangleDetail){
   let {triangleType, numberOfRow} = triangleDetail;
   let patternsType = {right: rightAlignedTriangle,left: leftAlignedTriangle}
-  return patternsType[triangleType](numberOfRow);
+  return patternsType[triangleType](numberOfRow).join('\n');
 }
 
 //---DIAMOND
@@ -220,7 +220,7 @@ const generateDiamond = function(userArgs){
   }
   let patternsType = { filled : generateFilledDiamond, hollow : generateHollowDiamond, angled : generatAngledDiamond }
 
-  return patternsType[diamondType](height);
+  return patternsType[diamondType](height).join('\n');
 }
 
 //---exports

@@ -38,15 +38,21 @@ assert.equal(generateRectangle({typeOfRectangle:'alternate', rows: 5, columns:2 
 const {generateTriangle} = require("../src/pattern_lib.js");
 
 //=====(Left Alignment Triangle Test)
-let leftTriangle_5 = "*\n"
-  leftTriangle_5  += "**\n"
-  leftTriangle_5  += "***\n"
-  leftTriangle_5  += "****\n"
+let leftTriangle_5 = "*    \n"
+  leftTriangle_5  += "**   \n"
+  leftTriangle_5  += "***  \n"
+  leftTriangle_5  += "**** \n"
   leftTriangle_5  += "*****";
 
 assert.equal(generateTriangle({ triangleType : "left", numberOfRow :5 }),leftTriangle_5);
-let leftTriangle_7 = leftTriangle_5 + "\n******\n*******";
 
+let leftTriangle_7  = "*      \n"
+    leftTriangle_7 += "**     \n"
+    leftTriangle_7 += "***    \n"
+    leftTriangle_7 += "****   \n"
+    leftTriangle_7 += "*****  \n"
+    leftTriangle_7 += "****** \n"
+    leftTriangle_7 += "*******"
 
 assert.equal(generateTriangle({ triangleType: "left", numberOfRow:7 }),leftTriangle_7);
 
@@ -65,44 +71,44 @@ assert.equal(generateTriangle({ triangleType: "right", numberOfRow: 6 }),rightTr
 const {generateDiamond} = require("../src/pattern_lib.js");
 
 //=====(Filled Diamond Test)
-let filledDiamond_3 = " *\n";
+let filledDiamond_3 = " * \n";
 filledDiamond_3    += "***\n";
-filledDiamond_3    += " *";
+filledDiamond_3    += " * ";
 
-let filledDiamond_5  = "  *\n";
-    filledDiamond_5 += " ***\n"
+let filledDiamond_5  = "  *  \n";
+    filledDiamond_5 += " *** \n"
     filledDiamond_5 += "*****\n"
-    filledDiamond_5 += " ***\n"
-    filledDiamond_5 += "  *";
+    filledDiamond_5 += " *** \n"
+    filledDiamond_5 += "  *  ";
 
 assert.equal(generateDiamond({diamondType: "filled", height: 3 }),filledDiamond_3);
 assert.equal(generateDiamond({diamondType: "filled", height: 5 }),filledDiamond_5);
 
 //=====(Hollow Diamond Test)
-let hollowDiamond_3 = " *\n"
+let hollowDiamond_3 = " * \n"
    hollowDiamond_3 += "* *\n"
-   hollowDiamond_3 += " *";
+   hollowDiamond_3 += " * ";
 
-let hollowDiamond_5 = "  *\n"
- hollowDiamond_5 +=   " * *\n"
+let hollowDiamond_5 = "  *  \n"
+ hollowDiamond_5 +=   " * * \n"
  hollowDiamond_5 +=   "*   *\n"
- hollowDiamond_5 +=   " * *\n"
- hollowDiamond_5 +=   "  *"
+ hollowDiamond_5 +=   " * * \n"
+ hollowDiamond_5 +=   "  *  "
 
 assert.equal(generateDiamond({diamondType: "hollow", height: 3 }),hollowDiamond_3);
 assert.equal(generateDiamond({diamondType: "hollow", height: 5 }),hollowDiamond_5);
 
 //=====(Angled Diamond Test)
-let angledDiamond_3 = " *\n"
+let angledDiamond_3 = " * \n"
  angledDiamond_3 +=   "* *\n"
- angledDiamond_3 +=   " *";
+ angledDiamond_3 +=   " * ";
 
 
-let angledDiamond_5 = "  *\n"
+let angledDiamond_5 = "  *  \n"
   angledDiamond_5  += " / \\\n"
   angledDiamond_5  += "*   *\n"
   angledDiamond_5  += " \\ /\n"
-  angledDiamond_5  += "  *";
+  angledDiamond_5  += "  *  ";
 
 
 assert.equal(generateDiamond({diamondType: "angled", height: 3 }),angledDiamond_3);
